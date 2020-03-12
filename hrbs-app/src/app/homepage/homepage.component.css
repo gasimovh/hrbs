@@ -30,3 +30,8 @@
     min-height: 100%;
     overflow: hidden;
   }
+
+.image-logo {
+    position: fixed;
+    margin: 0% 43%;
+}
