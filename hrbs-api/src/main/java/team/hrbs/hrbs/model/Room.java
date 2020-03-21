@@ -1,12 +1,15 @@
 package team.hrbs.hrbs.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.util.UUID;
 
-import java.util.Date;
-
+@Entity
 public class Room {
 
+    @Id
+    private UUID id;
     private String name;
-    private String id;
     private double price;
     private int periodOfStay;
     private int capacity;
@@ -28,11 +31,11 @@ public class Room {
         this.name = name;
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
