@@ -15,6 +15,7 @@ public class User {
     private String lastName;
     private String email;
     private String password;
-    @OneToMany()
+
+    @OneToMany
     private List<Room> bookings;
 }
