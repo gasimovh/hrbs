@@ -19,5 +19,5 @@ public class RoomController {
         this.roomRepository = roomRepository;
     }
 
-    
+
 }

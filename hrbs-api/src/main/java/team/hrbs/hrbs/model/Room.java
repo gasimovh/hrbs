@@ -19,6 +19,7 @@ public class Room {
         this.price = price;
         this.periodOfStay = periodOfStay;
         this.capacity = capacity;
+        this.id = UUID.randomUUID();
     }
 
     public Room() {}

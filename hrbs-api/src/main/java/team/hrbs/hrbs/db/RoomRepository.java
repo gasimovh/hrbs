@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import team.hrbs.hrbs.model.Room;
 import team.hrbs.hrbs.model.User;
 
+import java.util.List;
 import java.util.UUID;
 
 @Repository
