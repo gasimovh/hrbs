@@ -8,7 +8,8 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { BookingComponent } from './booking/booking.component';
 
 const appRoutes: Routes = [
-  {path: '', component: HomepageComponent}
+  {path: '', component: HomepageComponent},
+  {path: 'booking', component: BookingComponent}
 ];
 
 @NgModule({
