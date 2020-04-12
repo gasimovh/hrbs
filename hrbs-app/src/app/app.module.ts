@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HomepageComponent } from './homepage/homepage.component';
 import { BookingComponent } from './booking/booking.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
 
 const appRoutes: Routes = [
   {path: '', component: HomepageComponent},
@@ -20,6 +23,8 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
     RouterModule.forRoot(appRoutes),
     AppRoutingModule
   ],

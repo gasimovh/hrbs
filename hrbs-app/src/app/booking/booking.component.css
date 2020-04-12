@@ -1,0 +1,10 @@
+.img-booking {
+    z-index: -1;
+    position: fixed;
+    min-width: 100%;
+    max-width: 100%;
+}
+
+.user-data {
+   margin-left: 40%;
+}
