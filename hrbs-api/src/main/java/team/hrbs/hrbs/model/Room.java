@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.UUID;
 
-@Entity
+@Entity(name = "Room")
 public class Room {
 
     @Id

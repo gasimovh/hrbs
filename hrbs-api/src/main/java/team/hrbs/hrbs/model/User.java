@@ -6,7 +6,7 @@ import javax.persistence.OneToMany;
 import java.util.List;
 import java.util.UUID;
 
-@Entity
+@Entity(name = "User")
 public class User {
 
     @Id
@@ -17,8 +17,8 @@ public class User {
     private String password;
 
 
-//    @OneToMany
-//    private List<Booking> bookings;
+    @OneToMany
+    private List<Booking> bookings;
 
     public User(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
@@ -28,6 +28,10 @@ public class User {
         this.id = UUID.randomUUID();
     }
     public User(){}
+
+    public UUID getId() {
+        return id;
+    }
 
     public String getFirstName() {
         return firstName;
