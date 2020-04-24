@@ -1,0 +1,37 @@
+.video-layer{
+    background: rgba(0,0,0,0.6);
+    position: fixed;
+    top:10;
+    left:0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+}
+ 
+.video-layer h1 {
+    text-align:center;
+    color:#fff;
+    font-size: 70px;
+    margin-top:15%;
+} 
+
+.video-layer p {
+    text-align: center;
+    color: #ffff;
+    font-size: 30px;
+    margin-top: -3%;
+}
+
+.fullscreen-bg__video {
+    z-index: -1;
+    position: fixed;
+    min-width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+  }
+
+.image-logo {
+    position: fixed;
+    margin: 0% 43%;
+}

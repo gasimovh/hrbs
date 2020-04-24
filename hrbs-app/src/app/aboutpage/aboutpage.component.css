@@ -1,0 +1,60 @@
+
+.photo1{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  height: 70%;
+}
+h1 {
+  font-family: "proxima-nova",Helvetica,"Arial Unicode",sans-serif;
+  padding: 5% 15px 0 15px;
+  margin: 0;
+  text-align: center;
+  color: rgb(240, 240, 240);
+  text-shadow: 0 0 10px rgb(10, 10, 10);
+ 
+}
+
+.row {
+  display: flex;
+  margin: 20px auto;
+  max-width: 1500px;
+}
+
+.col {
+  font-family: "proxima-nova",Helvetica,"Arial Unicode",sans-serif;
+  flex: 1 1 0;
+  padding: 0 10px;
+  margin: 0 20px;
+  background: rgb(135, 190, 186);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.col > img {
+  margin: 0 -10px;
+  max-width: calc(100% + 20px);
+}
+
+.his{
+  font-family: "proxima-nova",Helvetica,"Arial Unicode",sans-serif;
+  background: rgba(0, 0, 0, 0.3);
+  color: rgb(240, 240, 240);
+  text-align: center;
+  text-shadow: 0 0 10px rgb(10, 10, 10);
+}
+.bg {
+  z-index: -1;
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  
+}
+p{
+  font-family: "proxima-nova",Helvetica,"Arial Unicode",sans-serif;
+  background: rgba(0, 0, 0, 0.3);
+  color: rgb(240, 240, 240);
+  text-align: center;
+  text-shadow: 0 0 10px rgb(10, 10, 10);
+}
