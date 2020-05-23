@@ -15,9 +15,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@RequestMapping(value="/booking")
-
-
 public class BookingController {
     private BookingRepository bookingRepository;
     @Autowired
@@ -25,20 +22,12 @@ public class BookingController {
         this.bookingRepository = bookingRepository;
     }
 
-//    @RequestMapping(method = RequestMethod.GET)
-//    public List<Booking> getAll(){
-//        return bookingRepository.findAll();
-//    }
 
     @RequestMapping(method = RequestMethod.GET)
     public Optional<Booking> find(UUID id){
         return bookingRepository.findById(id);
     }
 
-//    @RequestMapping(method = RequestMethod.GET)
-//    public Optional<Booking> find(String firstname, String lastname){
-//        return bookingRepository.findAllByUser(UserRepository.findByFirstNameAndLastName(firstname, lastname));
-//    }
 
     @RequestMapping(method = RequestMethod.POST)
     public List<Booking> create(@RequestBody Booking booking){

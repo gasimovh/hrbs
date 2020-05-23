@@ -1,54 +1,81 @@
 package team.hrbs.hrbs.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.UUID;
+
 @Entity(name = "Booking")
 public class Booking {
     @Id
-    private UUID BookingId;
-    private UUID room;
-    private UUID user;
-    private int numberOfPeople;
-    private int periodOfStay;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long Id;
 
-    public Booking(Room room, User user, int numberOfPeople, int periodOfStay) {
-        this.user=user.getId();
-        this.room = room.getId();
-        this.numberOfPeople = numberOfPeople;
-        this.periodOfStay = periodOfStay;
-        this.BookingId = UUID.randomUUID();
-    }
-    public Booking(){}
+    @Column(nullable = false)
+    @NotNull(message = "Feild required")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate checkIn;
 
-    public int getNumberOfPeople() {
-        return numberOfPeople;
-    }
+    @Column(nullable = false)
+    @NotNull(message = "Feild required")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate checkOut;
 
-    public void setNumberOfPeople(int numberOfPeople) {
-        this.numberOfPeople = numberOfPeople;
+    @OneToOne(mappedBy = "booking")
+    private Room room;
+
+    public Booking() {
     }
 
-    public int getPeriodOfStay() {
-        return periodOfStay;
+    public Long getId() {
+        return Id;
     }
 
-    public void setPeriodOfStay(int periodOfStay) {
-        this.periodOfStay = periodOfStay;
+    public void setId(Long id) {
+        Id = id;
     }
 
-    public UUID getRoom() {
+    public LocalDate getCheckIn() {
+        return checkIn;
+    }
+
+    public void setCheckIn(LocalDate checkIn) {
+        this.checkIn = checkIn;
+    }
+
+    public LocalDate getCheckOut() {
+        return checkOut;
+    }
+
+    public void setCheckOut(LocalDate checkOut) {
+        this.checkOut = checkOut;
+    }
+
+    public Room getRoom() {
         return room;
     }
 
-    public void setRooms(Room room) {
-        this.room = room.getId();
+    public void setRoom(Room room) {
+        this.room = room;
     }
 
-    public UUID getUser() { return user; }
+    public long getNights() {
+        if (checkIn != null || checkOut != null) {
+            return 0;
+        }
+        return ChronoUnit.DAYS.between(checkIn, checkOut);
+    }
 
-    public void setUser(User user) { this.user = user.getId(); }
+    public long getTotalCost() {
+        long nights = getNights();
+        if (nights != 0) {
+            return room.getPricePerNight() * nights;
+        }
+        return 0;
+    }
 }

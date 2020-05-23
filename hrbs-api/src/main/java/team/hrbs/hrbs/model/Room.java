@@ -1,59 +1,71 @@
 package team.hrbs.hrbs.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.UUID;
 
-@Entity(name = "Room")
+@Entity
 public class Room {
 
     @Id
-    private UUID id;
-    private String name;
-    private double price;
-    private int periodOfStay;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @Column(nullable = false)
+    private String roomNo;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private RoomType type;
+
+    @Column(nullable = false)
+    private long pricePerNight;
+
+    @Column(nullable = false)
     private int capacity;
 
-    public Room(String name, double price, int periodOfStay, int capacity) {
-        this.name = name;
-        this.price = price;
-        this.periodOfStay = periodOfStay;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Booking booking;
+
+    public Room(String roomNo, RoomType type, int capacity, long pricePerNight) {
+        this.roomNo = roomNo;
+        this.type = type;
         this.capacity = capacity;
-        this.id = UUID.randomUUID();
+        this.pricePerNight = pricePerNight;
     }
 
-    public Room() {}
-
-    public String getName() {
-        return name;
+    public Room() {
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public double getPrice() {
-        return price;
+    public String getRoomNo() {
+        return roomNo;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setRoomNo(String roomNo) {
+        this.roomNo = roomNo;
     }
 
-    public int getPeriodOfStay() {
-        return periodOfStay;
+    public RoomType getType() {
+        return type;
     }
 
-    public void setPeriodOfStay(int periodOfStay) {
-        this.periodOfStay = periodOfStay;
+    public void setType(RoomType type) {
+        this.type = type;
+    }
+
+    public long getPricePerNight() {
+        return pricePerNight;
+    }
+
+    public void setPricePerNight(long pricePerNight) {
+        this.pricePerNight = pricePerNight;
     }
 
     public int getCapacity() {
@@ -63,4 +75,21 @@ public class Room {
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
+
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
+        if (booking != null) {
+            this.booking = booking;
+            booking.setRoom(this);
+        }
+    }
+
+    public boolean isBooked() {
+        return booking != null;
+    }
+
+
 }
