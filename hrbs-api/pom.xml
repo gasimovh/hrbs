@@ -105,6 +105,22 @@
 				<artifactId>maven-checkstyle-plugin</artifactId>
 				<version>3.1.1</version>
 			</plugin>
+			<plugin>
+				<groupId>com.heroku.sdk</groupId>
+				<artifactId>heroku-maven-plugin</artifactId>
+				<version>2.0.3</version>
+				<configuration>
+					<appName>hrbs-heroku</appName>
+					<includeTarget>false</includeTarget>
+					<includes>
+						<include>target/hrbs-0.0.1-SNAPSHOT.jar</include>
+					</includes>
+					<jdkVersion>1.8</jdkVersion>
+					<processTypes>
+						<web>java $JAVA_OPTS -jar target/hrbs-0.0.1-SNAPSHOT.jar</web>
+					</processTypes>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 

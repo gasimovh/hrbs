@@ -6,7 +6,7 @@ import javax.persistence.OneToMany;
 import java.util.List;
 import java.util.UUID;
 
-@Entity(name = "User")
+@Entity
 public class User {
 
     @Id
@@ -15,10 +15,6 @@ public class User {
     private String lastName;
     private String email;
     private String password;
-
-
-    @OneToMany
-    private List<Booking> bookings;
 
     public User(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;

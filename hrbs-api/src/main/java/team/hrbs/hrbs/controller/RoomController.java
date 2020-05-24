@@ -15,9 +15,13 @@ public class RoomController {
 
     private RoomRepository roomRepository;
 
-    public RoomController(RoomRepository roomRepository){
+    public RoomController(RoomRepository roomRepository) {
         this.roomRepository = roomRepository;
     }
 
+    @RequestMapping("/")
+    public String index() {
+        return "Hello there! I'm running.";
+    }
 
 }
